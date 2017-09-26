@@ -164,7 +164,29 @@ public class AuthenticationController {
 		} else {
 			return new JsonResult(401, "erreur lors de l'envoi du mail,  veuillez reessayer");
 		}
+	}
+	
 
+	@Path("/getHash/{value}")
+	@GET
+	@Produces("application/json")
+	public JsonResult getHash(@PathParam("value") String value) {
+		JsonResult jsonResult;
+		String hashed = "";
+		if (value.isEmpty()) {
+			jsonResult = new JsonResult(401, "le text a hashé doit etre fourni");
+		}
+		try {
+			hashed = authenticationRemote.hashValue(value);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new JsonResult(201,hashed);
 	}
 
 }

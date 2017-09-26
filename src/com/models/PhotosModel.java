@@ -2,7 +2,7 @@ package com.models;
 
 public class PhotosModel {
 	private Long id;
-	private Long nom;
+	private String nom;
 	private String url;
 	public Long getId() {
 		return id;
@@ -10,10 +10,10 @@ public class PhotosModel {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getNom() {
+	public String getNom() {
 		return nom;
 	}
-	public void setNom(Long nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	public String getUrl() {
